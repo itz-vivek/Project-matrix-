@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 2</title>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 30px;
+        }
+
+        .container a {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            margin: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .container a:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.matrix-link');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    alert('You clicked on the ' + e.target.textContent + ' link!');
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+
+
+    <header>
+        <h1>LDU Matrix Operations</h1>
+        <p>Select a type of matrix operation</p>
+    </header>
+l̥ō
+
+    <nav>
+        <a href="UTM.html">Upper Triangular Matrix</a>
+        <a href="lower triangle.html">Lower Triangular Matrix</a>
+        <a href="Diagonal matrix.html">Diagonal Matrix</a>
+    </nav>
+
+
+    <div class="container">
+        <a href="UTM.html" class="matrix-link">Upper Triangular Matrix</a>
+        <a href="lower triangle.html" class="matrix-link">Lower Triangular Matrix</a>
+        <a href="Diagonal matrix.html" class="matrix-link">Diagonal Matrix</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Matrix Operations Project. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
