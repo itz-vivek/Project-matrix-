@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    text-align: center; 
+}
+
+table {
+    margin: 20px auto; 
+    border-collapse: collapse;
+    width: 50%;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+input[type="number"] {
+    width: 50px;
+    text-align: center;
+}
+
+.step, .result {
+    margin-top: 20px;
+    text-align: center; 
+}
+
+#steps, #result {
+    white-space: pre-wrap;
+    text-align: left;
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
