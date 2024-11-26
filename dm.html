@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix to Diagonal Matrix</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            color: #333;
+            text-align: center;
+        }
+        input {
+            width: 40px;
+            padding: 8px;
+            text-align: center;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .matrix, .steps {
+            margin-top: 20px;
+        }
+        .matrix div {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            margin: 5px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Matrix to Diagonal Matrix</h1>
+
+    <!-- Matrix size input -->
+    <div>
+        <label for="matrix-size">Enter matrix size (n x n):</label>
+        <input type="number" id="matrix-size" value="3" min="1">
+    </div>
+
+    <!-- Matrix Input (dynamically generated) -->
+    <div id="matrix-input"></div>
+
+    <!-- Convert Button -->
+    <button onclick="convertToDiagonal()">Convert</button>
+
+    <!-- Result Section -->
+    <div class="matrix" id="result"></div>
+    <div class="steps" id="steps"></div>
+
+    <script>
+        // Function to generate the matrix input dynamically
+        function generateMatrixInput() {
+            const size = document.getElementById("matrix-size").value;
+            const matrixInputContainer = document.getElementById("matrix-input");
+            matrixInputContainer.innerHTML = ""; // Clear existing input fields
+            
+            for (let i = 0; i < size; i++) {
+                const row = document.createElement("div");
+                for (let j = 0; j < size; j++) {
+                    const input = document.createElement("input");
+                    input.type = "number";
+                    input.id = `cell-${i}-${j}`;
+                    row.appendChild(input);
+                }
+                matrixInputContainer.appendChild(row);
+                matrixInputContainer.appendChild(document.createElement("br"));
+            }
+        }
+
+        // Function to get the values of the matrix from input fields
+        function getMatrixValues() {
+            const size = document.getElementById("matrix-size").value;
+            const matrix = [];
+            for (let i = 0; i < size; i++) {
+                const row = [];
+                for (let j = 0; j < size; j++) {
+                    row.push(document.getElementById(`cell-${i}-${j}`).value || 0);
+                }
+                matrix.push(row);
+            }
+            return matrix;
+        }
+
+        // Function to display the matrix in a readable format
+        function displayMatrix(matrix) {
+            return matrix.map(row => row.map(cell => `<div>${cell}</div>`).join('')).join('');
+        }
+
+        // Function to convert the matrix to diagonal matrix step by step
+        function convertToDiagonal() {
+            const matrix = getMatrixValues();
+            const size = matrix.length;
+            
+            // Display the original matrix
+            const stepsContainer = document.getElementById("steps");
+            stepsContainer.innerHTML = "<p>Step 1: Initial Matrix:</p>";
+            stepsContainer.innerHTML += displayMatrix(matrix);
+            stepsContainer.innerHTML += "<br>";
+
+            let diagonalMatrix = JSON.parse(JSON.stringify(matrix)); // Clone matrix to preserve the original
+
+            // Step 1: Set non-diagonal elements to 0
+            for (let i = 0; i < size; i++) {
+                for (let j = 0; j < size; j++) {
+                    if (i !== j) {
+                        diagonalMatrix[i][j] = 0;
+                    }
+                }
+            }
+
+            // Display after Step 1
+            stepsContainer.innerHTML += "<p>Step 2: Set non-diagonal elements to 0:</p>";
+            stepsContainer.innerHTML += displayMatrix(diagonalMatrix);
+            stepsContainer.innerHTML += "<br>";
+
+            // Step 2: Copy the diagonal elements (if any modifications were needed)
+            // (In our case, the diagonal elements are already preserved)
+            stepsContainer.innerHTML += "<p>Step 3: Diagonal elements are already set:</p>";
+            stepsContainer.innerHTML += displayMatrix(diagonalMatrix);
+            stepsContainer.innerHTML += "<br>";
+
+            // Display the diagonal matrix result
+            const resultContainer = document.getElementById("result");
+            resultContainer.innerHTML = "<p>Final Diagonal Matrix:</p>";
+            resultContainer.innerHTML += displayMatrix(diagonalMatrix);
+        }
+
+        // Initial generation of matrix input (default 3x3)
+        generateMatrixInput();
+
+        // Event listener to regenerate the matrix input when size changes
+        document.getElementById("matrix-size").addEventListener("input", generateMatrixInput);
+
+    </script>
+
+</body>
+</html>
